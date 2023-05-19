@@ -1,5 +1,7 @@
-# How Well do Professional League of Legends Team Keep Leads at 15 Minutes?
-This is project 3 of the UCSD DSC80 class.
+# Throwers throw, but do winners always win?
+This is project 3 of the UCSD DSC80 class by Justin Liang
+
+---
 
 ## Introduction and Question Identification
 
@@ -17,6 +19,7 @@ As there are many unnecessary columns in this dataset, we only are interested in
 | datacompleteness | Describes if all applicable columns entries are filled for each row|
 | url | Website for information regarding the match played, commonly only found for rows which data is incomplete |
 | side | One team plays on the Blue Side of the map, the other on the Red Side. There are differences to the side, but not important for this analysis|
+| teamname | The name of the team that is playing |
 | gamelength | The duration of the game (in seconds) |
 | totalgold | Total Gold that is earned by the player/team from cs-ing, kills (towers, enemies, neutral mobs, etc.), etc.|
 | goldat15 | Total Gold that is earned by the player/team from cs-ing, kills (towers, enemies, neutral mobs, etc.), etc. at 15 minute mark in game |
@@ -54,7 +57,7 @@ Furthermore, the dataset also contains many extraneous information regarding the
 
 After the pruning of the unnecessary rows and columns, the remaining columns do contain some data in incorrect form, namely 'result' which contain boolean values in the form of 0's and 1's which is somewhat hard to understand at a glance. To fix this, the datatype was converted from type int to type boolean.
 
-As the remaining data is already cleaned, the dataset is now much smaller in size as seen below:
+As the remaining data is already cleaned, the dataset is now much smaller in size as seen below. Even though there remains some columns which contain NaN values, their importance/unimportance will be discussed later in this analysis.
 
 |    | gameid                | datacompleteness   | url                                         | side   | teamname                      |   gamelength | result   |   totalgold |   goldat15 |   xpat15 |   csat15 |   golddiffat15 |   xpdiffat15 |   csdiffat15 |   killsat15 |   assistsat15 |   deathsat15 |   killassisttotal15 |
 |---:|:----------------------|:-------------------|:--------------------------------------------|:-------|:------------------------------|-------------:|:---------|------------:|-----------:|---------:|---------:|---------------:|-------------:|-------------:|------------:|--------------:|-------------:|--------------------:|
@@ -70,8 +73,11 @@ As the remaining data is already cleaned, the dataset is now much smaller in siz
 | 59 | 8401-8401_game_2      | partial            | https://lpl.qq.com/es/stats.shtml?bmid=8401 | Red    | ThunderTalk Gaming            |         1444 | False    |       41155 |        nan |      nan |      nan |            nan |          nan |          nan |         nan |           nan |          nan |                   0 |
 
 
-There does remain an interesting variable that might give us insight into what is considered to be a lead - killsat15 and assistat15. The values in these columns will be summed and assigned a new column titled "killassisttotal15".
+There does remain an interesting variable that might give us insight into what is considered to be a lead - killsat15 and assistat15. 
 
 ---
 
+### Univariate Analysis
 
+<iframe src="assets/goldleadat15hist" width=800 height=600 frameBorder=0></iframe>
+<iframe src="assets/xpdiffat15hist.html" width=800 height=600 frameBorder=0></iframe>
