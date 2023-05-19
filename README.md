@@ -11,8 +11,24 @@ In regular League of Legend matches, players are given the opportunity to play t
 
 As there are many unnecessary columns in this dataset, we only are interested in the columns that contain the statistics relevant to our analysis of this question, which can be summarized below.
 
-| Syntax | Description |
+| Column | Description |
 | ----------- | ----------- |
 | Header | Title |
+| Paragraph | Text |
+| Paragraph | Text |
+| Paragraph | Text |
+| Paragraph | Text |
+| Paragraph | Text |
+| Paragraph | Text |
+| Paragraph | Text |
+| Paragraph | Text |
+| Paragraph | Text |
+| Paragraph | Text |
+| Paragraph | Text |
+| Paragraph | Text |
+| Paragraph | Text |
+| Paragraph | Text |
+| Paragraph | Text |
+| Paragraph | Text |
 | Paragraph | Text |
 
