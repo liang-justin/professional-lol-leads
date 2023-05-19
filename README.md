@@ -1,2 +1,8 @@
-# 
-This is project 3 of the UCSD DSC80 class. xd
+# How Well do Professional League of Legends Team Keep Leads at 15 Minutes?
+This is project 3 of the UCSD DSC80 class.
+
+## Introduction and Question Identification
+
+League of Legends (LOL) is a popular MOBA that is played by many people around the world. Like other sports like basketball, football, soccer, etc. it can be enjoyed casually and even professionally in the form of League of Legends Esports. Like the many professional leagues for sports, League of Legends Esports is a collection of the best players and teams in the world which compete to lift the Summoner's Cup. Split into the region that they are found in (ie. Americas, Europle, Korea), the teams in each region duke it out with one another to determine which team(s) are most fit to represent the region at international events. With its large increase in popularity, fans, both serious and casual, are able to tune in to these matches and see their favorite teams and players parttake in such events. In a similar fashion to other sports leagues, many of the important events and statistics in each match are documented for those to see and understand. Information such as gold earned, xp gained, CS, etc. can help us viewers understand the current climate of the game and provide insight to who might be victorious at the end. This information is not only valuable to the viewer, but can also be valueable to the players and teams on ways to improve in the future.
+
+In the dataset organized by OraclesElixir, all matches across all regions in the 2022 professional LOL esports season were collected. Within this dataset, it contains information regarding the who: the team that played, which players, which patch; the what: in-game statistics such as which champions were picked, champions that were banned, which side, game statistics - gold, xp, dragon kills, baron kills,etc.; and the the outcome of the match. From this dataset
