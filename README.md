@@ -13,22 +13,19 @@ As there are many unnecessary columns in this dataset, we only are interested in
 
 | Column | Description |
 | ----------- | ----------- |
-| Header | Title |
-| Paragraph | Text |
-| Paragraph | Text |
-| Paragraph | Text |
-| Paragraph | Text |
-| Paragraph | Text |
-| Paragraph | Text |
-| Paragraph | Text |
-| Paragraph | Text |
-| Paragraph | Text |
-| Paragraph | Text |
-| Paragraph | Text |
-| Paragraph | Text |
-| Paragraph | Text |
-| Paragraph | Text |
-| Paragraph | Text |
-| Paragraph | Text |
-| Paragraph | Text |
+| gameid | Unique identifier for each match played |
+| datacompleteness | Describes if all applicable columns entries are filled for each row|
+| url | Website for information regarding the match played, commonly only found for rows which data is incomplete |
+| side | One team plays on the Blue Side of the map, the other on the Red Side. There are differences to the side, but not important for this analysis|
+| gamelength | The duration of the game (in seconds) |
+| totalgold | Total Gold that is earned by the player/team from cs-ing, kills (towers, enemies, neutral mobs, etc.), etc.|
+| goldat15 | Total Gold that is earned by the player/team from cs-ing, kills (towers, enemies, neutral mobs, etc.), etc. at 15 minute mark in game |
+| xpat15 | Total Experience that is earned by the player/team from cs-ing, kills (towers, enemies, neutral mobs, etc.), etc. at 15 minute mark in game |
+| csat15 | Total CS that by the player/team from killing enemy minions |
+| golddiffat15 | The differential between the Team Gold Earned at the 15 minute mark |
+| xpdiffat15 | The differential between the Team Experience Earned at the 15 minute mark |
+| csdiffat15 | The differential between the Team CS Earned at the 15 minute mark |
+| killsat15 | The total number of enemy champion kills at the 15 minute mark (player deals the final damage) |
+| assistsat15 | The total number of enemy champion assists at the 15 minute mark (player assists on the damaging of the enemy) |
+| deathsat15 | Total number of champion deaths |
 
