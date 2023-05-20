@@ -116,5 +116,30 @@ Columns such as information regarding some of the differentials ('goldat10', 'xp
 
 #### Missingness Dependency
 
-<iframe src="assets/indenpdent.html" width=800 height=600 frameBorder=0></iframe>
+The LOL esports dataset contains many columns which contain missing data. Some of this missing data can be seen in columns which focus on the statistics of the game at the 15 minute mark, namely 'goldat15', 'xpat15', etc.. As there are only some values that are missing from these "incomplete" rows, we wanted to further analyze the possibly depedency of columns like this on possible other columns. More specifically we wanted to analyze if the missingness of the 'goldat15' column dependent on the 'league' column of the dataset. A permutation test was used to determine the missingness dependency between these two columns by shuffling the 'league' column over 500 trials and calculating the Total Variation Distance between the two distributions. These calculated 500 trial TVD's were then plotted on a graph (shown below) along with the observed TVD of the original dataset.
+
 <iframe src="assets/dependent.html" width=800 height=600 frameBorder=0></iframe>
+
+As seen above, the observed TVD value from the initial dataset is much farther right than any of the calculated TVDs from our permutation test. This points to the missingness of the 'goldat15' column to the 'league' that the match was played in. To further understand why this might be, we could possibly look to further explore why this data wasn't collected/recorded for the match. By exploring the breakdown of which regions have a higher percentage of these values missing, we can investigate why the other columns in the dataset were reported while columns such as 'goldat15' were not.
+
+---
+
+## Hypothesis Test
+
+To answer our question, we will be performing a permutation test to see the difference between the winrates of matches for which a team held a lead in both gold **and** xp at the 15 minute mark.
+
+We defined our null hypothesis and alternative hypothesis as the following:
+
+**Null Hypothesis:** A team lead (in gold **and** xp) at 15 minutes result in a win.
+
+**Alternative Hypothesis:** A team lead (in gold **and** xp) at 15 minutes doesn't result in win.
+
+This null and alternative hypotheses were chosen as they best encompass what can be seen as lead at 15 minutes. This early into the game, map presence (tower kills, jungle control, etc.) and game state are relatively even across the board, this gives us a decent metric at determining if these early leads in gold and xp can snowball into a win down the line.
+
+As stated earlier we are using the signed difference between teams who had a lead at 15 minutes and those who didn't. We didn't want to use the absolute difference, as it might cause unintended data to be added in our permutation test (values posing as a greater winrate for teams who didn't have a lead at 15 minutes). The defined significance level is alpha = 0.05. 
+
+After performing the permutation test, the distribution of the test statistic both observed and permuted are visualized below. 
+
+<iframe src="assets/winrates.html" width=800 height=600 frameBorder=0></iframe>
+
+Using the observed test statistic of the data, we see that the distribution of the test statistic from the permutation test all fall below the red line. This resulted in a p-value determination of 0.0. Since the p-value is much smaller than the significance level of 0.05, we will reject the null hypothesis. Even though that we reject the null hypothesis, there could possibly be evidence that points to this being true. One plausible explanantion that might point to this is the strictness of the definition of a lead might havce contributed to a very high observed test statistic. Since we are only taking into account gold and xp, there could possibly be other factors, such as dragon kills, towers killed, jungle control, etc. that might not be able to be accounted for, thus causing games that are considered to be "leads" to not be a lead in reality. However, in the scope of this analysis, we are only able to use these two variables to predict.
