@@ -82,7 +82,7 @@ The kills/assist of each game up to the first 15 minutes can also give us insigh
 
 Spawning into the game at 0:00, most of the "action" that happens after the ~1:30 minute mark. Especially in professional games where the players are the best of the best, in many of the games there might be little to no action until the later stages of the game after champions "come online" with full-item purchases. We hope to visualize what types of gold leads there are and at what frequency to give us some insight to the game state at the 15 minute mark.
 
-<iframe src="assets/goldleadat15hist(1).html" width=800 height=600 frameBorder=0></iframe>
+<iframe src="assets/goldleadat15hist (1).html" width=800 height=600 frameBorder=0></iframe>
 
 From this histogram, it is clearly evident that most professional games that were played in 2022 were relatively "close" in the sense of gold leads. The left skew of the data provides some information to the game state up to that point as many of the core components of the early game of each match revolve around getting gold efficiently and quick - kills being worth 300 gold, cs-ing, assist kills (range from 75-150 gold), or even just being "bullied" (not being able to cs) in lane. These leads that are generated based on gold are not monumental for the 15 minute mark and are definitely possible to overcome from the 15 minute mark until the end of the match.
 
@@ -90,7 +90,7 @@ From this histogram, it is clearly evident that most professional games that wer
 
 Gold Differential doesn't always tell the best story in League of Legends. Experience or 'xp' can also serve as a tell-tale sign of a lead in matches. CS-ing, kills, dragon kills all give xp to champions. Once the champion obtains a set number of  experience points, they can level up abilities, giving players more options/opportunities to play to the strengths of the champion which they have chosen. This was further explored in the histogram below.
 
-<iframe src="assets/xpdiffat15hist(1).html" width=800 height=600 frameBorder=0></iframe>
+<iframe src="assets/xpdiffat15hist (1).html" width=800 height=600 frameBorder=0></iframe>
 
 Interesting! The spread of the XP differentials at the 15 minute mark is very similar to the Gold differentials graph. As stated earlier, since kills, CS-ing, dragon kills all provide xp to champions, they also provide champions that were involved gold as well. This might point to a positive relationship between gold earned and xp earned.
 
