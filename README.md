@@ -72,6 +72,8 @@ As the remaining data is already cleaned, the dataset is now much smaller in siz
 | 58 | 8401-8401_game_2      | partial            | https://lpl.qq.com/es/stats.shtml?bmid=8401 | Blue   | Oh My God                     |         1444 | True     |       54283 |        nan |      nan |      nan |            nan |          nan |          nan |         nan |           nan |          nan |                   0 |
 | 59 | 8401-8401_game_2      | partial            | https://lpl.qq.com/es/stats.shtml?bmid=8401 | Red    | ThunderTalk Gaming            |         1444 | False    |       41155 |        nan |      nan |      nan |            nan |          nan |          nan |         nan |           nan |          nan |                   0 |
 
+The kills/assist of each game up to the first 15 minutes can also give us insight to how large the lead might be, so we will sum their columns and enter them into an additional column. 
+
 ---
 
 ### Univariate Analysis
@@ -80,7 +82,7 @@ As the remaining data is already cleaned, the dataset is now much smaller in siz
 
 Spawning into the game at 0:00, most of the "action" that happens after the ~1:30 minute mark. Especially in professional games where the players are the best of the best, in many of the games there might be little to no action until the later stages of the game after champions "come online" with full-item purchases. We hope to visualize what types of gold leads there are and at what frequency to give us some insight to the game state at the 15 minute mark.
 
-<iframe src="assets/goldleadat15hist" width=800 height=600 frameBorder=0></iframe>
+<iframe src="assets/goldleadat15hist(1).html" width=800 height=600 frameBorder=0></iframe>
 
 From this histogram, it is clearly evident that most professional games that were played in 2022 were relatively "close" in the sense of gold leads. The left skew of the data provides some information to the game state up to that point as many of the core components of the early game of each match revolve around getting gold efficiently and quick - kills being worth 300 gold, cs-ing, assist kills (range from 75-150 gold), or even just being "bullied" (not being able to cs) in lane. These leads that are generated based on gold are not monumental for the 15 minute mark and are definitely possible to overcome from the 15 minute mark until the end of the match.
 
@@ -88,7 +90,7 @@ From this histogram, it is clearly evident that most professional games that wer
 
 Gold Differential doesn't always tell the best story in League of Legends. Experience or 'xp' can also serve as a tell-tale sign of a lead in matches. CS-ing, kills, dragon kills all give xp to champions. Once the champion obtains a set number of  experience points, they can level up abilities, giving players more options/opportunities to play to the strengths of the champion which they have chosen. This was further explored in the histogram below.
 
-<iframe src="assets/xpdiffat15hist.html" width=800 height=600 frameBorder=0></iframe>
+<iframe src="assets/xpdiffat15hist(1).html" width=800 height=600 frameBorder=0></iframe>
 
 Interesting! The spread of the XP differentials at the 15 minute mark is very similar to the Gold differentials graph. As stated earlier, since kills, CS-ing, dragon kills all provide xp to champions, they also provide champions that were involved gold as well. This might point to a positive relationship between gold earned and xp earned.
 
@@ -96,5 +98,23 @@ Interesting! The spread of the XP differentials at the 15 minute mark is very si
 
 <iframe src="assets/goldxpdiff.html" width=800 height=600 frameBorder=0></iframe>
 
+That's interesting, there seems to be a general linear relationship between the gold differential at the 15 minute mark and the xp differential. Like what was said earlier, these two statistics help to paint a better picture of the climate of the game at this point. Even though certain champions are strong by themselves even in a deficit, a lead in both xp and gold is something an enemy champ doesn't want to see in a head to head, or even in a team fight.
 
+### Pivot Table
 
+| result   |   ('mean', 'golddiffat15') |   ('mean', 'killassisttotal15') |   ('mean', 'xpdiffat15') |   ('median', 'golddiffat15') |   ('median', 'killassisttotal15') |   ('median', 'xpdiffat15') |
+|:---------|---------------------------:|--------------------------------:|-------------------------:|-----------------------------:|----------------------------------:|---------------------------:|
+| False    |                   -1724.2  |                         7.20358 |                 -1032.87 |                        -1551 |                                 6 |                       -926 |
+| True     |                    1724.85 |                        11.0047  |                  1033.26 |                         1551 |                                10 |                        927 |
+
+This pivot table provides some general information on the conditions of the teams find themselves in at the 15 minute mark in relation to the outcome of the match. It is generall seen that a result of a win (True) usually points toward a lead at the 15 minute mark across all three of the columns of interest. This provides us with some context to how professional players are able to leverage these leads to snowball into a win. It is seen that both the mean and the median value of these conditions share similar sentiments.
+
+## Assessment of Missingness
+
+#### NMAR Analysis
+Columns such as information regarding some of the differentials ('goldat10', 'xpat10', etc.) could be considered to be NMAR. This is because if the data is sorted by region (LPL, LCK, LCS, LEC, etc.) we see that the data that is missing here is dependent on itself since some regions might be uninclined to take these measurements while others do. It might also be down to the actual data retrieval as it is impossible to watch every single match and note down every single bit of information as there are many matches going on across the world (as seen by the large number of matches completed). To determine the missingness I think it would be nice to see why these certain regions are not collecting this information while others are. Looking at the 'partial' responses in the 'datacompleteness' column, we see that many of the matches that have this information missing also include a url to a place where the information was retrieved from. Maybe these regions might want to report on more meaningful information, as seen with the other columns, rather than worry about the gold differential, xp differential, etc. at 10 minutes and 15 minutes.
+
+#### Missingness Dependency
+
+<iframe src="assets/indenpdent.html" width=800 height=600 frameBorder=0></iframe>
+<iframe src="assets/dependent.html" width=800 height=600 frameBorder=0></iframe>
